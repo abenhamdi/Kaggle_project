@@ -1,0 +1,24 @@
+#ifndef __BLOCKCELL_H
+#define __BLOCKCELL_H
+#include "cell.h"
+class BlockCell{
+ private:
+  Cell* cellPointer;
+  BlockCell* nextBlock;
+ public:
+  //constructeurs
+
+  BlockCell();
+  BlockCell(Cell* c);
+
+  BlockCell* getNextBlock()const;
+  Cell* getCellPointer()const;
+
+  void setNextBlockCell(BlockCell*);
+  void setCellPointer(Cell*);
+
+  
+
+};
+
+#endif

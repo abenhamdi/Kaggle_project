@@ -1,0 +1,38 @@
+#include<iostream>
+
+#include"ListeCell.h"
+
+ListeCell::ListeCell():head(NULL),tail(NULL),size(0){}
+
+ListeCell::ListeCell(BlockCell* Bcell):head(Bcell),tail(Bcell),size(1){}
+
+/*void ListeCell::setNextBlock(BlockCell* thisBlock,BlockCell* NextBlock){
+  thisBlock->setNextBlockCell(NextBlock);
+}*/
+
+size_t ListeCell::getSize()const{ return size;}
+
+bool ListeCell::est_Vide()const{return size==0;}
+
+BlockCell* ListeCell::getTail()const{ return tail;}
+BlockCell* ListeCell::getHead()const{ return head;}
+
+BlockCell* ListeCell::getSucc(BlockCell* BC)const{ return BC->getNextBlock();}
+
+void ListeCell::addAfter(BlockCell* BC,Cell* cell){
+  BlockCell* blockC=new BlockCell(cell);
+  size++;
+  if(BC==NULL){
+    BC->setNextBlockCell(blockC);
+  }else{
+    BlockCell* tmp= BC->getNextBlock();
+    BC->setNextBlockCell(blockC);
+    blockC->setNextBlockCell(tmp);
+    delete tmp;
+  }
+  delete blockC;
+}
+
+void ListeCell::printListe()const{
+  getHead()->printBlock();
+}
